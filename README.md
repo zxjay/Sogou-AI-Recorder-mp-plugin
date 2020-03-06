@@ -1,14 +1,7 @@
 # 搜狗AI录音笔SDK小程序插件
 
-<<<<<<< HEAD
-搜狗AI录音笔SDK小程序插件的演示视频在github：https://github.com/zxjay/Sogou-AI-Recorder-mp-plugin/blob/master/show.mp4
-
-该小程序插件可以用于连接控制搜狗AI录音笔，管理录音文件等。
-该插件仅能扫描到并且连接搜狗AI录音笔，其它蓝牙设备会被忽略。
-=======
 搜狗AI录音笔SDK小程序插件，该小程序插件可以用于连接控制搜狗AI录音笔，管理录音文件等。
 该插件仅能扫描到并且连接搜狗AI录音笔，其它蓝牙设别会被忽略。
->>>>>>> 0059b6e01eecee7feb214bfa3d67996857b12ed7
 搜狗AI录音笔SDK小程序插件架构图如下。
 
 ![链接](./image.png)
