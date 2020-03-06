@@ -1,9 +1,9 @@
 # 搜狗AI录音笔SDK小程序插件
 
-使用该插件到小程序演示链接如下：
-![链接](./show.mp4)
-搜狗AI录音笔SDK小程序插件，该小程序插件可以用于连接控制搜狗AI录音笔，管理录音文件等。
-该插件仅能扫描到并且连接搜狗AI录音笔，其它蓝牙设别会被忽略。
+搜狗AI录音笔SDK小程序插件的演示视频在github：https://github.com/zxjay/Sogou-AI-Recorder-mp-plugin/blob/master/show.mp4
+
+该小程序插件可以用于连接控制搜狗AI录音笔，管理录音文件等。
+该插件仅能扫描到并且连接搜狗AI录音笔，其它蓝牙设备会被忽略。
 搜狗AI录音笔SDK小程序插件架构图如下。
 
 ![链接](./image.png)
@@ -27,8 +27,9 @@
 
  App::onLaunch中初始化SDK
 
-`plugin.SogouSDKConfig.initSDK(token, type, protocol, callback)`
+`plugin.SogouSDKConfig.initSDK(userId, token, type, protocol, callback)`
 
+userId: 当前用户等userId，用于跟录音笔配对，实现自动连接
 token: 申请SDK分配的token
 type: 需要使用的录音笔型号 当前为 1
 protocol: 协议版本，当前为 1
@@ -37,7 +38,7 @@ callback: 录音笔信息回调
 示例：
 
 ```
-plugin.SogouSDKConfig.initSDK("6b3a3d173aff", 1, 1, {
+plugin.SogouSDKConfig.initSDK("default_user", "6b3a3d173aff", 1, 1, {
     onDeviceFound: function(deviceArray) {
         // device info
     },
@@ -68,9 +69,8 @@ plugin.SogouSDKConfig.initSDK("6b3a3d173aff", 1, 1, {
 /**
   解除配对信息
   @params isClearFile true清除录音笔文件 false 保留文件 default
-  @params token 0-65535
 */
-depair(isClearFile,token) 
+depair(isClearFile) 
 
 /**
   获取session信息
@@ -101,8 +101,13 @@ pauseRecord(sessionId)
 /**
   恢复录音
   @params sessionId 录音文件id
+  @params scene 场景传入本次录制的场景
+     = 0,//默认
+     = 1,//标准
+     = 2,//采访
+     = 3,//演讲
 */
-resumeRecord(sessionId) 
+resumeRecord(sessionId,scene) 
 
 /**
   开始录音
